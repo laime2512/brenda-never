@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Matrimonio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #f8e9e9;
+            --color-secondary: #f5f0e8;
+            --color-accent: #d4a5a5;
+            --color-text: #5a5a5a;
+            --color-gold: #c9a96e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--color-text);
+            background-color: #fff;
+            overflow-x: hidden;
+            background-color: var(--color-primary);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23d4a5a5' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        /* Tipografía */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: var(--color-text);
+        }
+        
+        .font-cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        /* Encabezado */
+        .header {
+            background-color: var(--color-secondary);
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4a5a5' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.7;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--color-gold);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .couple-names {
+            font-size: 4.5rem;
+            color: var(--color-accent);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        /* Elementos florales */
+        .floral-divider {
+            position: relative;
+            margin: 30px auto;
+            width: 200px;
+            height: 40px;
+            text-align: center;
+        }
+        
+        .floral-divider::before,
+        .floral-divider::after {
+            content: "❀";
+            position: absolute;
+            top: 0;
+            font-size: 24px;
+            color: var(--color-accent);
+        }
+        
+        .floral-divider::before {
+            left: 40px;
+        }
+        
+        .floral-divider::after {
+            right: 40px;
+        }
+        
+        .floral-divider .line {
+            display: inline-block;
+            width: 80px;
+            height: 1px;
+            background-color: var(--color-accent);
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        
+        .flower-decoration {
+            position: absolute;
+            font-size: 24px;
+            color: var(--color-accent);
+            z-index: 1;
+        }
+        
+        /* Secciones */
+        .section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--color-gold);
+            text-align: center;
+        }
+        
+        .bg-light {
+            background-color: var(--color-secondary) !important;
+        }
+        
+        /* Detalles de la boda */
+        .detail-item {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-icon {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+        }
+        
+        .detail-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--color-gold);
+        }
+        
+        /* Galería */
+        .gallery-item {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        /* Contador */
+        .countdown {
+            background-color: var(--color-secondary);
+            padding: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .countdown-item {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-accent);
+            display: block;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 1rem;
+            color: var(--color-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Formulario de confirmación */
+        .confirmation-form {
+            background-color: var(--color-secondary);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .btn-primary {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            padding: 12px 30px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c98f8f;
+            border-color: #c98f8f;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--color-secondary);
+            padding: 40px 0;
+            color: var(--color-text);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4a5a5' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .couple-names {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con nombres -->
+    <header class="header text-center">
+        <div class="flower-decoration" style="top: 20px; left: 20px;">🌸</div>
+        <div class="flower-decoration" style="top: 20px; right: 20px;">🌺</div>
+        <div class="flower-decoration" style="bottom: 40px; left: 10%;">🌷</div>
+        <div class="flower-decoration" style="bottom: 40px; right: 10%;">💮</div>
+        
+        <div class="container">
+            <p class="subtitle">NUESTRO DESTINO ESTABA ESCRITO Y POR FIN HA LLEGADO EL MOMENTO DE COMPARTIRLO CON TODOS USTEDES…</p>
+            <h1 class="main-title font-cursive">¡Nos Casamos!</h1>
+            <div class="floral-divider">
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            
+            <h2 class="couple-names font-cursive">
+                Brenda <span class="text-muted">&</span> Never
+            </h2>
+            
+            <p class="lead">14 de Febrero de 2026</p>
+        </div>
+    </header>
+    
+    <!-- Contador regresivo -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title font-cursive">Faltan</h2>
+            
+            <div class="countdown">
+                <div class="row text-center">
+                    <div class="col-6 col-md-3 countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="col-6 col-md-3 countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="col-6 col-md-3 countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="col-6 col-md-3 countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detalles de la boda -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title font-cursive">Detalles del Evento</h2>
+            
+            <div class="row">
+                <div class="col-md-4 detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3>Ceremonia</h3>
+                    <p>La Parroquia Nuestra<br>Señora Del Perpetuo Socorro</p>
+                </div>
+                
+                <div class="col-md-4 detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Recepción</h3>
+                    <p>Salón de Eventos "Los Pinos"<br>Calle Capitán Peralta # 2997</p>
+                </div>
+                
+                <div class="col-md-4 detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Fecha</h3>
+                    <p>Sábado 14 de Febrero de 2026<br>Ceremonia: 12:00 hrs<br>Recepción: 13:00 hrs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Galería de imágenes -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title font-cursive">Nuestra Historia</h2>
+            
+            <div class="row">
+                <div class="col-md-4 gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" class="gallery-img" alt="Pareja en el campo">
+                    <div class="p-3">
+                        <p class="text-center">Nuestro primer viaje juntos</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" class="gallery-img" alt="Anillo de compromiso">
+                    <div class="p-3">
+                        <p class="text-center">El día de nuestra compromiso</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 gallery-item">
+                    <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" class="gallery-img" alt="Pareja abrazada">
+                    <div class="p-3">
+                        <p class="text-center">Celebrando nuestro amor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Confirmación de asistencia -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title font-cursive">Confirma tu Asistencia</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="confirmation-form">
+                        <p class="text-center mb-4">Por favor, confirma tu asistencia antes del 23 de Enero de 2026 </p>
+                        
+                        <form id="rsvpForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Nombre completo *</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Correo electrónico *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="guests" class="form-label">Número de invitados *</label>
+                                <select class="form-control" id="guests" required>
+                                    <option value="" selected disabled>Selecciona una opción</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 personas</option>
+                                    <option value="3">3 personas</option>
+                                    <option value="4">4 personas</option>
+                                    <option value="5">5 personas o más</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">¿Asistirás a ambos eventos?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="attendance" id="both" value="both" checked>
+                                    <label class="form-check-label" for="both">
+                                        Sí, asistiré a la ceremonia y recepción
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="attendance" id="ceremonyOnly" value="ceremonyOnly">
+                                    <label class="form-check-label" for="ceremonyOnly">
+                                        Solo a la ceremonia
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="attendance" id="receptionOnly" value="receptionOnly">
+                                    <label class="form-check-label" for="receptionOnly">
+                                        Solo a la recepción
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="attendance" id="cannotAttend" value="cannotAttend">
+                                    <label class="form-check-label" for="cannotAttend">
+                                        No podré asistir
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje para los novios (opcional)</label>
+                                <textarea class="form-control" id="message" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Confirmar Asistencia</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="flower-decoration" style="top: 30px; left: 10%;">🌹</div>
+        <div class="flower-decoration" style="top: 30px; right: 10%;">🌻</div>
+        
+        <div class="container">
+            <h3 class="font-cursive mb-4">¡Esperamos contar con tu presencia!</h3>
+            <p>Con amor, Brenda y Never</p>
+            <div class="floral-divider my-4">
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <p>Para cualquier consulta, contáctanos:<br>
+            <i class="fas fa-phone me-2"></i> 63787011</p>
+            <i class="fas fa-phone me-2"></i> 73491852</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Contador regresivo
+        function updateCountdown() {
+            const weddingDate = new Date('february 14, 2026 12:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+        }
+        
+        // Actualizar contador cada segundo
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Manejar el formulario de confirmación
+        document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            // Aquí normalmente enviarías los datos a un servidor
+            // Por ahora, solo mostraremos una alerta
+            const name = document.getElementById("name").value;
+            alert(`¡Gracias ${name}! Tu confirmación ha sido recibida. Te esperamos en nuestra boda.`);
+            
+            // Limpiar formulario
+            document.getElementById("rsvpForm").reset();
+        });
+        
+        // Agregar flores decorativas aleatorias
+        document.addEventListener("DOMContentLoaded", function() {
+            const flowerEmojis = ["🌸", "🌺", "🌷", "💮", "🌹", "🌻", "🌼"];
+            const sections = document.querySelectorAll('.section, .header, .footer');
+            
+            sections.forEach(section => {
+                // Agregar algunas flores aleatorias
+                for (let i = 0; i < 3; i++) {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower-decoration';
+                    flower.style.top = `${Math.random() * 80 + 10}%`;
+                    flower.style.left = `${Math.random() * 80 + 10}%`;
+                    flower.style.fontSize = `${Math.random() * 20 + 16}px`;
+                    flower.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+                    flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                    
+                    section.appendChild(flower);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
