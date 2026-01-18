@@ -1,0 +1,452 @@
+:root {
+    --color-paper: #f9f3e9;
+    --color-envelope: #e6d4c3;
+    --color-envelope-dark: #d4b89c;
+    --color-gold: #c9a96e;
+    --color-accent: #d4a5a5;
+    --color-text: #5a5a5a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.envelope-page {
+    font-family: 'Raleway', sans-serif;
+    color: var(--color-text);
+    background: linear-gradient(135deg, #f8e9e9 0%, #f5f0e8 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.font-cursive {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Fondo floral */
+.floral-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4a5a5' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    z-index: 0;
+}
+
+/* Contenedor del sobre */
+.envelope-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: 500px;
+    z-index: 10;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Estilos del sobre */
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s ease;
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-envelope);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: var(--color-envelope-dark);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform 1s ease;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 30px;
+}
+
+.stamp {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--color-gold), #e6c9a0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px dashed white;
+}
+
+.stamp-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: white;
+    transform: rotate(-15deg);
+}
+
+.recipient {
+    text-align: right;
+}
+
+.recipient-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 5px;
+}
+
+.recipient-address {
+    font-style: italic;
+    color: var(--color-accent);
+}
+
+.envelope-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-envelope-dark);
+    border-radius: 10px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.envelope-seal {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+}
+
+/* Carta */
+.letter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--color-paper);
+    border-radius: 5px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease 0.5s;
+    overflow: hidden;
+}
+
+.letter-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.letter-title {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+}
+
+.floral-divider {
+    position: relative;
+    margin: 15px auto;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+
+.floral-divider::before,
+.floral-divider::after {
+    content: "❀";
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    color: var(--color-accent);
+}
+
+.floral-divider::before {
+    left: 40px;
+}
+
+.floral-divider::after {
+    right: 40px;
+}
+
+.floral-divider .line {
+    display: inline-block;
+    width: 70px;
+    height: 1px;
+    background-color: var(--color-accent);
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.floral-corner {
+    position: absolute;
+    font-size: 24px;
+    color: var(--color-accent);
+    opacity: 0.7;
+}
+
+.floral-corner.top-left {
+    top: 0;
+    left: 0;
+}
+
+.floral-corner.top-right {
+    top: 0;
+    right: 0;
+}
+
+.floral-corner.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.floral-corner.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.letter-body {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.greeting {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.letter-body p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.couple-signature {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.couple-names {
+    font-size: 2.5rem;
+    color: var(--color-gold);
+    text-shadow: 1px 1px 3px rgba(201, 169, 110, 0.3);
+}
+
+.instruction {
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px;
+    background-color: rgba(212, 165, 165, 0.1);
+    border-radius: 10px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.instruction-text {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin: 0;
+}
+
+.instruction i {
+    font-size: 1.4rem;
+}
+
+.letter-footer {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+.date {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--color-gold);
+    font-size: 1.2rem;
+}
+
+/* Instrucción para móviles */
+.mobile-instruction {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    animation: pulse 2s infinite;
+    display: none;
+}
+
+.mobile-instruction p {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 12px 25px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Estados de animación */
+.envelope-container.open .envelope {
+    transform: translateY(-100px);
+}
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-container.open .letter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efecto de brillo al hacer hover */
+.envelope-container:hover .envelope-front {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .envelope-container {
+        height: 400px;
+    }
+    
+    .letter-title {
+        font-size: 2rem;
+    }
+    
+    .couple-names {
+        font-size: 2rem;
+    }
+    
+    .recipient-text {
+        font-size: 1.5rem;
+    }
+    
+    .stamp {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .stamp-text {
+        font-size: 1rem;
+    }
+    
+    .letter {
+        padding: 25px;
+    }
+    
+    .mobile-instruction {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .envelope-container {
+        height: 350px;
+    }
+    
+    .letter-title {
+        font-size: 1.7rem;
+    }
+    
+    .couple-names {
+        font-size: 1.8rem;
+    }
+    
+    .recipient-text {
+        font-size: 1.3rem;
+    }
+    
+    .envelope-body {
+        padding: 20px;
+    }
+    
+    .letter {
+        padding: 20px;
+    }
+    
+    .instruction-text {
+        font-size: 1rem;
+    }
+    
+    .floral-divider {
+        width: 160px;
+    }
+    
+    .floral-divider::before {
+        left: 30px;
+    }
+    
+    .floral-divider::after {
+        right: 30px;
+    }
+}

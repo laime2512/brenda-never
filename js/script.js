@@ -33,8 +33,39 @@ function isMobileDevice() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
 
+// Verificar si la imagen PNG del ramo existe
+function checkRoseImage() {
+    const roseBouquet = document.querySelector('.rose-bouquet');
+    if (roseBouquet) {
+        const img = new Image();
+        // Extraer la URL de la imagen del background-image
+        const bgImage = window.getComputedStyle(roseBouquet).backgroundImage;
+        const imageUrl = bgImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+        
+        if (imageUrl && imageUrl !== 'none') {
+            img.src = imageUrl;
+            
+            img.onerror = function() {
+                // Si la imagen no se carga, usar el fallback
+                document.body.classList.add('no-rose-image');
+            };
+            
+            img.onload = function() {
+                // Si la imagen se carga correctamente, quitar la clase de fallback
+                document.body.classList.remove('no-rose-image');
+            };
+        } else {
+            // Si no hay imagen de fondo, usar el fallback
+            document.body.classList.add('no-rose-image');
+        }
+    }
+}
+
 // Ajustar flores decorativas según dispositivo
 document.addEventListener("DOMContentLoaded", function() {
+    // Verificar imagen del ramo de rosas
+    checkRoseImage();
+    
     const flowerEmojis = ["🌸", "🌺", "🌷", "💮", "🌹", "🌻", "🌼"];
     const sections = document.querySelectorAll('.section, .header, .footer');
     
@@ -88,19 +119,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Efecto de animación para el ramo de rosas
 document.addEventListener('DOMContentLoaded', function() {
-    const roses = document.querySelectorAll('.rose');
+    const roseBouquet = document.querySelector('.rose-bouquet');
     
-    // Añadir animación más pronunciada al hacer hover (solo en desktop)
-    if (!isMobileDevice()) {
-        roses.forEach(rose => {
-            rose.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.2) rotate(10deg)';
+    if (roseBouquet) {
+        // Añadir animación más pronunciada al hacer hover (solo en desktop)
+        if (!isMobileDevice()) {
+            roseBouquet.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(5deg)';
                 this.style.transition = 'transform 0.3s ease';
             });
             
-            rose.addEventListener('mouseleave', function() {
+            roseBouquet.addEventListener('mouseleave', function() {
                 this.style.transform = '';
             });
-        });
+        }
     }
 });
